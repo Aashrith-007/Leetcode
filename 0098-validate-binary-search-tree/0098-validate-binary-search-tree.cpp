@@ -11,12 +11,12 @@
  */
 class Solution {
 public:
-    bool isval(TreeNode *r,long mi,long ma){
+    bool check(TreeNode *r,long mi,long ma){
         if (!r) return true;
         if (r->val<=mi || r->val>=ma) return false;
-        return isval(r->left,mi,r->val) && isval(r->right,r->val,ma);
+        return check(r->left,mi,r->val) && check(r->right,r->val,ma);
     }
     bool isValidBST(TreeNode* root) {
-        return isval(root,LONG_MIN,LONG_MAX);
+        return check(root,LONG_MIN,LONG_MAX);
     }
 };
